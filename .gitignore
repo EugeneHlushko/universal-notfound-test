@@ -1,0 +1,6 @@
+# defaults
+.idea
+node_modules
+
+# application related
+dist

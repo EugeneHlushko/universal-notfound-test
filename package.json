@@ -1,0 +1,44 @@
+{
+  "name": "universal-notfound-test",
+  "version": "0.0.0",
+  "description": "Experimenting with google crawler behavior",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "nodemon ./server/index.js --exec babel-node --presets es2015,stage-2",
+    "build": "babel server -d dist/server",
+    "serve": "node dist/index.js"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EugeneHlushko/universal-notfound-test.git"
+  },
+  "keywords": [
+    "koa",
+    "universal",
+    "isomorphic",
+    "react",
+    "webpack",
+    "redux"
+  ],
+  "author": "Eugene Hlushko <jhlushko@gmail.com> (https://github.com/EugeneHlushko)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EugeneHlushko/universal-notfound-test/issues"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "koa": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-2": "^6.13.0",
+    "nodemon": "^1.10.2"
+  }
+}

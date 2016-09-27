@@ -1,6 +1,7 @@
 # defaults
 .idea
 node_modules
+.DS_Store
 
 # application related
 dist

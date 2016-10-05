@@ -1,30 +1,18 @@
-import Koa from 'koa';
-import debug from 'debug';
+// Delete the `BROWSER` env variable if it's present
+// https://github.com/iam4x/isomorphic-flux-boilerplate/issues/16
+delete process.env.BROWSER;
 
-import config from './config';
+// Tell `require` calls to look into `/app` also
+// it will avoid `../../../../../` require strings
+process.env.NODE_PATH = 'app';
+require('module').Module._initPaths();
 
-const app = new Koa();
+// Install `babel` hook for ES6
+require('babel-core/register');
+require('babel-polyfill');
 
-// enable global debugs
-debug.enable('*');
-if (process.NODE_ENV === 'development') {
-    debug.enable('dev');
-}
+// Load Intl polyfill
+require('utils/intl-polyfill')(require('./config').locales);
 
-// catch 500 error
-app.use(async (ctx, next) => {
-    try {
-        await next(); // next is now a function
-    } catch (err) {
-        ctx.body = { message: err.message };
-        ctx.status = err.status || 500;
-    }
-});
-
-app.use(async ctx => {
-    ctx.body = await 'test';
-});
-
-app.listen(config.port);
-
-debug('*')(`Successfully started server at ${config.port}`);
+// Start the server
+require('./koa.js');

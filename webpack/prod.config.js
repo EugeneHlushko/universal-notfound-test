@@ -20,8 +20,8 @@ export default {
         exclude: /node_modules\/(?!font-awesome)/
       },
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss'),
+        test: /\.s?css$/,
+        loader: 'style!css?sourceMap!postcss!sass',
         exclude: /node_modules/
       }
     ]

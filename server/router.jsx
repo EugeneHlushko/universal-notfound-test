@@ -1,7 +1,7 @@
 import debug from 'debug';
 
 import React from 'react';
-import {renderToString} from 'react-dom/server';
+import {renderToStaticMarkup} from 'react-dom/server';
 
 import createFlux from 'flux/createFlux';
 
@@ -40,7 +40,7 @@ export default async function (ctx) {
 
     debug('dev')('return html content')
     const props = {body, assets, locale, title, description};
-    const html = renderToString(<ServerHTML { ...props } />);
+    const html = renderToStaticMarkup(<ServerHTML { ...props } />);
     ctx.status = statusCode;
     ctx.body = `<!DOCTYPE html>${html}`;
   } catch (err) {
